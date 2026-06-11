@@ -401,3 +401,9 @@ CMD ["nginx", "-g", "daemon off;"]
 | **Security Risk** | High (more installed packages = larger attack surface) | **Low** (reduced packages and dependencies) |
 | **Deployment Speed** | Slow (large payload to push/pull) | **Fast** (extremely small size, boots instantly) |
 | **Build Artifacts** | Leftover temporary source files and build configurations | Production-ready distribution files only |
+
+---
+
+## 📚 Related Resources
+* Check out the [Linux & Kubernetes Troubleshooting Guide](./LINUX_TROUBLESHOOTING.md) for detailed, command-level diagnostic answers and troubleshooting workflows.
+* Check out the [AWS Reference & Interview Guide](./AWS_QUESTIONS.md) for comprehensive AWS core concepts, architectures, and troubleshooting steps.
