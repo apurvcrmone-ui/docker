@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%" style="background-color: #0d1117; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f6feb" />
+      <stop offset="100%" stop-color="#58a6ff" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8957e5" />
+      <stop offset="100%" stop-color="#d8b4fe" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d29922" />
+      <stop offset="100%" stop-color="#f8e3a1" />
+    </linearGradient>
+    <linearGradient id="hostGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161b22" />
+      <stop offset="100%" stop-color="#21262d" />
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <text x="400" y="30" text-anchor="middle" fill="#f0f6fc" font-size="20" font-weight="bold">Docker Engine Architecture</text>
+
+  <!-- Client -->
+  <g transform="translate(30, 80)" filter="url(#dropShadow)">
+    <rect width="180" height="110" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+    <rect x="0" y="0" width="180" height="30" rx="10" fill="#21262d" clip-path="inset(0 0 10 0)" />
+    <text x="90" y="20" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">DOCKER CLIENT</text>
+    <rect x="15" y="45" width="150" height="45" rx="6" fill="#0d1117" stroke="#1f6feb" stroke-width="1" />
+    <text x="25" y="62" fill="#58a6ff" font-size="10" font-family="Courier New, monospace">$ docker run</text>
+    <text x="25" y="78" fill="#58a6ff" font-size="10" font-family="Courier New, monospace">$ docker build</text>
+  </g>
+
+  <!-- Communication Line Client -> Daemon -->
+  <g>
+    <path d="M 210 135 L 290 135" fill="none" stroke="#58a6ff" stroke-width="2" />
+    <polygon points="290,131 298,135 290,139" fill="#58a6ff" />
+    <text x="250" y="125" text-anchor="middle" fill="#8b949e" font-size="9" font-weight="bold">REST API</text>
+  </g>
+
+  <!-- Docker Host / Engine boundary -->
+  <g transform="translate(300, 60)" filter="url(#dropShadow)">
+    <rect width="470" height="330" rx="12" fill="url(#hostGrad)" stroke="#30363d" stroke-width="1.5" />
+    <text x="20" y="25" fill="#f0f6fc" font-size="13" font-weight="bold" letter-spacing="1">DOCKER HOST (ENGINE)</text>
+
+    <!-- Daemon (dockerd) -->
+    <g transform="translate(20, 50)">
+      <rect width="180" height="90" rx="8" fill="#21262d" stroke="#58a6ff" stroke-width="1.5" />
+      <text x="90" y="30" text-anchor="middle" fill="#f0f6fc" font-size="13" font-weight="bold">Docker Daemon</text>
+      <text x="90" y="48" text-anchor="middle" fill="#8b949e" font-size="10">dockerd service</text>
+      <!-- Mini state visual -->
+      <rect x="20" y="60" width="140" height="18" rx="4" fill="#0d1117" />
+      <text x="90" y="72" text-anchor="middle" fill="#58a6ff" font-size="9">Manages lifecycle & objects</text>
+    </g>
+
+    <!-- containerd (runtime) -->
+    <g transform="translate(20, 170)">
+      <rect width="180" height="60" rx="8" fill="#21262d" stroke="#8957e5" stroke-width="1" />
+      <text x="90" y="25" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">containerd</text>
+      <text x="90" y="42" text-anchor="middle" fill="#8b949e" font-size="10">Container Runtime</text>
+    </g>
+
+    <!-- Containers -->
+    <g transform="translate(20, 260)">
+      <rect x="0" y="0" width="80" height="45" rx="6" fill="url(#blueGrad)" />
+      <text x="40" y="22" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">Container</text>
+      <text x="40" y="35" text-anchor="middle" fill="#ffffff" font-size="8">Nginx (Running)</text>
+
+      <rect x="100" y="0" width="80" height="45" rx="6" fill="url(#blueGrad)" />
+      <text x="140" y="22" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">Container</text>
+      <text x="140" y="35" text-anchor="middle" fill="#ffffff" font-size="8">Python (Running)</text>
+    </g>
+
+    <!-- Images -->
+    <g transform="translate(270, 50)">
+      <rect width="170" height="75" rx="8" fill="#21262d" stroke="#d29922" stroke-width="1" />
+      <text x="85" y="25" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Images</text>
+      <text x="85" y="42" text-anchor="middle" fill="#8b949e" font-size="9">nginx:alpine</text>
+      <text x="85" y="58" text-anchor="middle" fill="#8b949e" font-size="9">python:3.9-slim</text>
+    </g>
+
+    <!-- Volumes & Networks -->
+    <g transform="translate(270, 150)">
+      <rect width="170" height="75" rx="8" fill="#21262d" stroke="#30363d" stroke-width="1" />
+      <text x="85" y="25" text-anchor="middle" fill="#f0f6fc" font-size="11" font-weight="bold">Volumes & Networks</text>
+      <text x="85" y="45" text-anchor="middle" fill="#8b949e" font-size="9">Persistent Volumes</text>
+      <text x="85" y="60" text-anchor="middle" fill="#8b949e" font-size="9">Bridge Networks</text>
+    </g>
+
+    <!-- Registry Link -->
+    <g transform="translate(270, 250)">
+      <rect width="170" height="60" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+      <text x="85" y="25" text-anchor="middle" fill="#58a6ff" font-size="11" font-weight="bold">Docker Registry / Hub</text>
+      <text x="85" y="42" text-anchor="middle" fill="#8b949e" font-size="9">Public & Private Repos</text>
+    </g>
+
+    <!-- Connections within Host -->
+    <!-- Daemon to containerd -->
+    <path d="M 110 140 L 110 170" fill="none" stroke="#8b949e" stroke-width="1.5" />
+    <polygon points="107,170 110,176 113,170" fill="#8b949e" />
+
+    <!-- containerd to Containers -->
+    <path d="M 110 230 L 110 260" fill="none" stroke="#8b949e" stroke-width="1.5" />
+    <polygon points="107,260 110,266 113,260" fill="#8b949e" />
+
+    <!-- Daemon to Images -->
+    <path d="M 200 90 L 270 90" fill="none" stroke="#8b949e" stroke-width="1.5" />
+    <polygon points="270,87 276,90 270,93" fill="#8b949e" />
+
+    <!-- Daemon to Volumes/Networks -->
+    <path d="M 180 140 L 270 170" fill="none" stroke="#8b949e" stroke-width="1.5" />
+    <polygon points="268,167 274,171 270,175" fill="#8b949e" />
+
+    <!-- Daemon to Registry -->
+    <path d="M 140 140 L 270 270" fill="none" stroke="#8b949e" stroke-width="1.5" />
+    <polygon points="267,266 274,272 271,275" fill="#8b949e" />
+  </g>
+</svg>

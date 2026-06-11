@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 280" width="100%" height="100%" style="background-color: #0d1117; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f6feb" />
+      <stop offset="100%" stop-color="#58a6ff" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d29922" />
+      <stop offset="100%" stop-color="#f8e3a1" />
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <text x="300" y="30" text-anchor="middle" fill="#f0f6fc" font-size="18" font-weight="bold">Docker Volumes (Data Persistence)</text>
+
+  <!-- Left: Host Machine Storage -->
+  <g transform="translate(40, 60)" filter="url(#dropShadow)">
+    <rect width="210" height="170" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+    <text x="105" y="30" text-anchor="middle" fill="#f0f6fc" font-size="13" font-weight="bold">Host Storage</text>
+    <rect x="15" y="50" width="180" height="90" rx="6" fill="#21262d" stroke="#8b949e" stroke-width="1" />
+    <!-- Folder Icon -->
+    <path d="M 35 70 L 35 120 L 175 120 L 175 80 L 100 80 L 85 65 L 35 65 Z" fill="#30363d" stroke="#8b949e" stroke-width="1"/>
+    <text x="105" y="105" text-anchor="middle" fill="#8b949e" font-size="9" font-family="Courier New, monospace">/var/lib/docker/volumes/</text>
+  </g>
+
+  <!-- Right: Ephemeral Container -->
+  <g transform="translate(350, 60)" filter="url(#dropShadow)">
+    <rect width="210" height="170" rx="10" fill="#161b22" stroke="#f85149" stroke-width="1.5" />
+    <text x="105" y="30" text-anchor="middle" fill="#f0f6fc" font-size="13" font-weight="bold">Docker Container</text>
+    
+    <!-- App inside container -->
+    <rect x="15" y="50" width="180" height="90" rx="6" fill="url(#blueGrad)" />
+    <!-- App Folders -->
+    <text x="105" y="80" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">Running Application</text>
+    <rect x="30" y="95" width="150" height="30" rx="4" fill="#0d1117" />
+    <text x="105" y="114" text-anchor="middle" fill="#f85149" font-size="10" font-family="Courier New, monospace">/app/data (Mounted)</text>
+  </g>
+
+  <!-- Volume Cylinder in between/connecting -->
+  <g transform="translate(265, 110)">
+    <!-- Custom cylinder representing volume mapping -->
+    <ellipse cx="35" cy="15" rx="20" ry="8" fill="url(#orangeGrad)" />
+    <path d="M 15 15 L 15 45 A 20 8 0 0 0 55 45 L 55 15 Z" fill="url(#orangeGrad)" />
+    <ellipse cx="35" cy="45" rx="20" ry="8" fill="#d29922" opacity="0.5"/>
+    <text x="35" y="70" text-anchor="middle" fill="#f8e3a1" font-size="9" font-weight="bold">Volume Mount</text>
+  </g>
+
+  <!-- Connector Lines -->
+  <path d="M 235 140 L 260 140" fill="none" stroke="#d29922" stroke-width="2" stroke-dasharray="3,3" />
+  <path d="M 320 140 L 345 140" fill="none" stroke="#d29922" stroke-width="2" stroke-dasharray="3,3" />
+
+  <!-- Footnote -->
+  <text x="300" y="260" text-anchor="middle" fill="#8b949e" font-size="11">Data remains intact on Host even if the Container is destroyed.</text>
+</svg>

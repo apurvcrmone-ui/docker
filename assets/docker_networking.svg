@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 280" width="100%" height="100%" style="background-color: #0d1117; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f6feb" />
+      <stop offset="100%" stop-color="#58a6ff" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#238636" />
+      <stop offset="100%" stop-color="#56d364" />
+    </linearGradient>
+    <linearGradient id="netGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161b22" />
+      <stop offset="100%" stop-color="#21262d" />
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <text x="300" y="30" text-anchor="middle" fill="#f0f6fc" font-size="18" font-weight="bold">User-Defined Bridge Network</text>
+
+  <!-- Network Boundary -->
+  <g transform="translate(40, 50)" filter="url(#dropShadow)">
+    <rect width="520" height="180" rx="12" fill="url(#netGrad)" stroke="#30363d" stroke-width="1.5" />
+    <text x="20" y="25" fill="#58a6ff" font-size="11" font-weight="bold" letter-spacing="1">BRIDGE NETWORK: two-tier-network</text>
+
+    <!-- App Container -->
+    <g transform="translate(30, 50)">
+      <rect width="180" height="90" rx="8" fill="#1f6feb" fill-opacity="0.1" stroke="#1f6feb" stroke-width="1.5" />
+      <rect x="15" y="15" width="150" height="35" rx="4" fill="url(#blueGrad)" />
+      <text x="90" y="37" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">App Container</text>
+      <text x="90" y="68" text-anchor="middle" fill="#f0f6fc" font-size="10">IP: 172.18.0.3</text>
+      <text x="90" y="80" text-anchor="middle" fill="#8b949e" font-size="8">Hostname: app-container</text>
+    </g>
+
+    <!-- Communication Bridge -->
+    <g transform="translate(210, 80)">
+      <path d="M 10 15 L 120 15" fill="none" stroke="#58a6ff" stroke-width="2.5" stroke-dasharray="4,4" />
+      <!-- Arrowheads -->
+      <polygon points="10,11 2,15 10,19" fill="#58a6ff" />
+      <polygon points="120,11 128,15 120,19" fill="#58a6ff" />
+      <rect x="25" y="-5" width="80" height="20" rx="4" fill="#161b22" stroke="#30363d" stroke-width="1" />
+      <text x="65" y="8" text-anchor="middle" fill="#f0f6fc" font-size="8" font-weight="bold">DNS Resolution</text>
+    </g>
+
+    <!-- DB Container -->
+    <g transform="translate(310, 50)">
+      <rect width="180" height="90" rx="8" fill="#238636" fill-opacity="0.1" stroke="#238636" stroke-width="1.5" />
+      <rect x="15" y="15" width="150" height="35" rx="4" fill="url(#greenGrad)" />
+      <text x="90" y="37" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">Database Container</text>
+      <text x="90" y="68" text-anchor="middle" fill="#f0f6fc" font-size="10">IP: 172.18.0.2</text>
+      <text x="90" y="80" text-anchor="middle" fill="#8b949e" font-size="8">Hostname / Alias: db-host</text>
+    </g>
+  </g>
+
+  <!-- Footnote -->
+  <text x="300" y="260" text-anchor="middle" fill="#8b949e" font-size="10">Containers communicate directly via container names as domain hostnames.</text>
+</svg>
